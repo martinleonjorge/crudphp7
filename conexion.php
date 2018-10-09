@@ -1,6 +1,6 @@
 <?php
 function Conectarse(){
-	$link = mysqli_connect("localhost","root","");
+	$link = mysqli_connect("localhost","root","root");
 	if (!$link){
 		exit();
 	}

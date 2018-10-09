@@ -24,7 +24,7 @@
     <script type="text/javascript">
 
         function addEmpleado() {
-           $('#nuevoempleado').load('');
+           $('#nuevoempleado').load('empleados.php');
         }
 
         function viewEmpleado(id) {
@@ -51,7 +51,36 @@
                         <h2 class="pull-left">Empleados - Detalles</h2>
                         <button type="button" class="btn btn-success pull-right" title="Nuevo empleado" data-toggle="modal" data-target="#newempleado" onclick="addEmpleado();"><i class="fa fa-check-circle"></i>Nuevo empleado</button>
                     </div>
-                    
+                    <?php 
+					include("conexion.php");
+					$link=conectarse();
+					$sql=mysqli_query($link,"select * from usuarios");
+					?>
+					<table class="table table-bordered table-striped")>
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Direccion</th>
+							<th>Salario</th>
+							<th>Accion</th>
+						</tr>
+						<?php
+						while($fila=mysqli_fetch_array($sql,MYSQLI_BOTH)){
+						
+						?>
+						<tr>
+							<td><?php echo $fila["Id"]?></td>
+							<td><?php echo $fila["Nombre"]?></td>
+							<td><?php echo $fila["Direccion"]?></td>
+							<td><?php echo $fila["Salario"]?></td>
+							<td>Accion</td>
+						</tr>
+						<?php } ?>
+						
+						
+						
+					</table>
+					
                     
                 </div>
             </div>        
